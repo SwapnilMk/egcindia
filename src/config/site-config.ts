@@ -57,11 +57,11 @@ export const siteConfig = {
       title: "About",
     },
     {
-      href: "/whyus",
+      href: "/why-choose",
       title: "Why Us?",
     },
     {
-      href: "/commercial-services",
+      href: "/services",
       title: "Commercial Services",
     },
     {
