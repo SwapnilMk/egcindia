@@ -112,7 +112,11 @@ export default function Home() {
           Explore Our Business
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 max-w-6xl mx-auto gap-6">
-          <Card className="shadow-md">
+          {/* Commercial Services - Clickable */}
+          <Card
+            onClick={() => navigate("/services/collaboration")}
+            className="shadow-md cursor-pointer hover:shadow-lg hover:scale-[1.02] transition-transform rounded-xl"
+          >
             <CardContent className="p-6">
               <h3 className="text-xl sm:text-2xl font-bold mb-2 text-blue-900">
                 Commercial Services
@@ -125,7 +129,9 @@ export default function Home() {
               </ul>
             </CardContent>
           </Card>
-          <Card className="shadow-md">
+
+          {/* IT & Technology - Non-clickable (but you can add onClick too if needed) */}
+          <Card className="shadow-md rounded-xl hover:shadow-lg hover:scale-[1.02] transition-transform">
             <CardContent className="p-6">
               <h3 className="text-xl sm:text-2xl font-bold mb-2 text-blue-900">
                 IT & Technology

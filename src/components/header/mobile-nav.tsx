@@ -4,6 +4,7 @@ import * as React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { siteConfig } from "@/config/site-config";
+import type { NavItem, SubmenuItem } from "@/config/site-config"; // Use type-only import
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -47,7 +48,6 @@ export function MobileNav({ className }: MobileNavProps) {
       >
         {/* Animated Hamburger Icon */}
         <div className="relative flex h-6 w-6 items-center justify-center">
-          {/* Top bar */}
           <motion.span
             className="absolute block h-0.5 w-5 bg-current rounded-sm"
             animate={
@@ -153,7 +153,7 @@ export function MobileNav({ className }: MobileNavProps) {
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ delay: 0.1, duration: 0.3 }}
                   >
-                    {siteConfig.navItems.map((item, index) =>
+                    {siteConfig.navItems.map((item: NavItem, index: number) =>
                       item.submenu ? (
                         <motion.div
                           key={item.href}
@@ -180,35 +180,37 @@ export function MobileNav({ className }: MobileNavProps) {
                               </AccordionTrigger>
                               <AccordionContent className="pb-2">
                                 <div className="ml-4 space-y-2 border-l border-border/30 pl-4">
-                                  {item.submenu.map((sub, subIndex) => (
-                                    <motion.div
-                                      key={sub.href}
-                                      initial={{ opacity: 0, x: -10 }}
-                                      animate={{ opacity: 1, x: 0 }}
-                                      transition={{
-                                        delay: 0.2 + subIndex * 0.03,
-                                        duration: 0.2,
-                                      }}
-                                    >
-                                      <MobileLink
-                                        href={sub.href}
-                                        onOpenChange={setOpen}
-                                        className="flex items-start gap-3 p-3 rounded-lg hover:bg-accent transition-colors duration-200"
+                                  {item.submenu.map(
+                                    (sub: SubmenuItem, subIndex: number) => (
+                                      <motion.div
+                                        key={sub.href}
+                                        initial={{ opacity: 0, x: -10 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{
+                                          delay: 0.2 + subIndex * 0.03,
+                                          duration: 0.2,
+                                        }}
                                       >
-                                        {sub.icon && (
-                                          <sub.icon className="h-4 w-4 text-muted-foreground mt-0.5 flex-shrink-0" />
-                                        )}
-                                        <div className="space-y-0.5">
-                                          <div className="text-sm font-medium">
-                                            {sub.title}
+                                        <MobileLink
+                                          href={sub.href}
+                                          onOpenChange={setOpen}
+                                          className="flex items-start gap-3 p-3 rounded-lg hover:bg-accent transition-colors duration-200"
+                                        >
+                                          {sub.icon && (
+                                            <sub.icon className="h-4 w-4 text-muted-foreground mt-0.5 flex-shrink-0" />
+                                          )}
+                                          <div className="space-y-0.5">
+                                            <div className="text-sm font-medium">
+                                              {sub.title}
+                                            </div>
+                                            <div className="text-xs text-muted-foreground line-clamp-2">
+                                              {sub.description}
+                                            </div>
                                           </div>
-                                          <div className="text-xs text-muted-foreground line-clamp-2">
-                                            {sub.description}
-                                          </div>
-                                        </div>
-                                      </MobileLink>
-                                    </motion.div>
-                                  ))}
+                                        </MobileLink>
+                                      </motion.div>
+                                    ),
+                                  )}
                                 </div>
                               </AccordionContent>
                             </AccordionItem>

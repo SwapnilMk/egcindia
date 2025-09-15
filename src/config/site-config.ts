@@ -1,16 +1,31 @@
-import logo from "../assets/logo/ecgindia.png";
-import {
-  Heart,
-  Sprout,
-  Bean,
-  Wheat,
-  Nut,
-  Shirt,
-  CrownIcon,
-  WheatIcon,
-} from "lucide-react";
+import logo from "@/assets/images/logos/ecgindia.png";
+import type { LucideIcon } from "lucide-react"; // Import LucideIcon type
 
 export const BLUR_FADE_DELAY = 0.15;
+
+// Define the type for submenu items
+export interface SubmenuItem {
+  href: string;
+  title: string;
+  description?: string;
+  icon?: LucideIcon; // Use LucideIcon instead of React.ComponentType
+}
+
+// Define the type for nav items
+export interface NavItem {
+  href: string;
+  title: string;
+  description?: string;
+  submenu?: SubmenuItem[];
+}
+
+// Define the type for footer items
+interface FooterItem {
+  links: {
+    title: string;
+    href: string;
+  }[];
+}
 
 export const siteConfig = {
   name: "EGC India",
@@ -49,92 +64,27 @@ export const siteConfig = {
   },
   navItems: [
     {
-      href: "/",
-      title: "Home",
-    },
-    {
       href: "/about",
       title: "About",
-    },
-    {
-      href: "/why-choose",
-      title: "Why Us?",
     },
     {
       href: "/services",
       title: "Commercial Services",
     },
     {
-      href: "/product",
-      title: "Products",
-      description:
-        "Browse our diverse range of high-quality agro and textile products.",
-      submenu: [
-        {
-          href: "/product/vegetables-fruits",
-          title: "Vegetables & Fruits",
-          icon: Sprout,
-          description:
-            "Fresh, high-quality vegetables and fruits exported globally.",
-        },
-        {
-          href: "/product/spices",
-          title: "Spices",
-          icon: Heart,
-          description: "Authentic Indian spices with rich flavors and aromas.",
-        },
-        {
-          href: "/product/pulses-beans",
-          title: "Pulses & Beans",
-          icon: Bean,
-          description:
-            "Nutritious pulses and beans for diverse culinary needs.",
-        },
-        {
-          href: "/product/grains",
-          title: "Grains",
-          icon: WheatIcon,
-          description: "Premium quality grains sourced from trusted farms.",
-        },
-        {
-          href: "/product/flour",
-          title: "Flour",
-          icon: Wheat,
-          description: "Finely milled flour for baking and cooking.",
-        },
-        {
-          href: "/product/coconut-products",
-          title: "Coconut Products",
-          icon: Nut,
-          description: "High-quality coconut-based products for various uses.",
-        },
-        {
-          href: "/product/cattle-feed",
-          title: "Cattle Feed",
-          icon: CrownIcon,
-          description:
-            "Nutritious feed for livestock, ensuring quality and health.",
-        },
-        {
-          href: "/product/textile-products",
-          title: "Textile Products",
-          icon: Shirt,
-          description: "Durable and high-quality textile products for export.",
-        },
-      ],
+      href: "/platforms",
+      title: "Platforms",
     },
     {
-      href: "/global-reach",
-      title: "Global Reach",
-      description:
-        "Our export network spans USA, Europe, Middle East, Canada, and Asia.",
+      href: "/partners",
+      title: "Partners",
     },
     {
       href: "/contact",
       title: "Contact",
       description: "Get in touch with us for inquiries and partnerships.",
     },
-  ],
+  ] as NavItem[], // Explicitly type navItems
   footerItems: [
     {
       links: [
@@ -171,7 +121,7 @@ export const siteConfig = {
         { title: "Disclaimer", href: "#" },
       ],
     },
-  ],
+  ] as FooterItem[],
 };
 
 export type SiteConfig = typeof siteConfig;

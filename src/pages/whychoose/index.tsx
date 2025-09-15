@@ -220,7 +220,9 @@ export default function WhyChoose() {
                 <Card className="shadow-md hover:shadow-lg transition">
                   <CardContent className="p-6">
                     <p className="italic text-gray-700 mb-4">“{test.quote}”</p>
-                    <h4 className="font-semibold text-blue-900">— {test.name}</h4>
+                    <h4 className="font-semibold text-blue-900">
+                      — {test.name}
+                    </h4>
                   </CardContent>
                 </Card>
               </motion.div>

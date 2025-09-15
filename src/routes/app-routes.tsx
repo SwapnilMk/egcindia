@@ -12,6 +12,9 @@ import RequestDemo from "@/pages/requestdemo";
 import ConnectOurTeam from "@/pages/contact/connect-team";
 import StartConversation from "@/pages/contact/conversation";
 import WhyChoose from "@/pages/whychoose";
+import Platforms from "@/pages/platform";
+import Industries from "@/pages/Industries";
+import Partners from "@/pages/partners";
 
 export const router = createBrowserRouter([
   {
@@ -30,8 +33,9 @@ export const router = createBrowserRouter([
           },
         ],
       },
-      // { path: "platforms", element: <Platforms /> },
-      // { path: "industries", element: <Industries /> },
+      { path: "platforms", element: <Platforms /> },
+      { path: "partners", element: <Partners /> },
+      { path: "industries", element: <Industries /> },
       { path: "why-choose", element: <WhyChoose /> },
       { path: "get-started", element: <GetStarted /> },
       {

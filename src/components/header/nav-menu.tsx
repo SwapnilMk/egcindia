@@ -3,6 +3,7 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 import { siteConfig } from "@/config/site-config";
+import type { NavItem, SubmenuItem } from "@/config/site-config"; // Use type-only import
 import { cn } from "@/lib/utils";
 import {
   NavigationMenu,
@@ -18,7 +19,7 @@ export function NavMenu({ className }: { className?: string }) {
   return (
     <NavigationMenu className={cn("hidden md:flex", className)}>
       <NavigationMenuList className="gap-1 space-x-0">
-        {siteConfig.navItems.map((item) =>
+        {siteConfig.navItems.map((item: NavItem) =>
           item.submenu ? (
             <NavigationMenuItem key={item.href}>
               <NavigationMenuTrigger className="h-9 px-4 py-2 text-sm font-medium transition-all duration-200 hover:bg-accent/80">
@@ -33,7 +34,7 @@ export function NavMenu({ className }: { className?: string }) {
                     </p>
                   </div>
                   <ul className="grid gap-3 md:grid-cols-2">
-                    {item.submenu.map((sub) => (
+                    {item.submenu.map((sub: SubmenuItem) => (
                       <ListItem
                         key={sub.href}
                         title={sub.title}
@@ -68,7 +69,7 @@ export function NavMenu({ className }: { className?: string }) {
 const ListItem = React.forwardRef<
   React.ElementRef<typeof Link>,
   React.ComponentPropsWithoutRef<typeof Link> & {
-    icon: LucideIcon;
+    icon?: LucideIcon;
     title: string;
   }
 >(({ className, title, children, icon: Icon, ...props }, ref) => {
@@ -85,7 +86,9 @@ const ListItem = React.forwardRef<
         >
           <div className="flex items-start gap-3">
             <div className="flex-shrink-0 mt-0.5">
-              <Icon className="h-5 w-5 text-muted-foreground group-hover:text-accent-foreground transition-colors duration-200" />
+              {Icon && (
+                <Icon className="h-5 w-5 text-muted-foreground group-hover:text-accent-foreground transition-colors duration-200" />
+              )}
             </div>
             <div className="space-y-1">
               <div className="text-sm font-semibold leading-none group-hover:text-accent-foreground transition-colors duration-200">

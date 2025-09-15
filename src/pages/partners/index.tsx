@@ -3,6 +3,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
+import india from "@/assets/images/flags/india.svg";
+import australia from "@/assets/images/flags/australia.svg";
+import uae from "@/assets/images/flags/uae.svg";
+import usa from "@/assets/images/flags/usa.svg";
+import germany from "@/assets/images/flags/germany .svg";
+import japan from "@/assets/images/flags/japan.svg";
 
 const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
@@ -13,7 +19,7 @@ const sectionVariants: Variants = {
   },
 };
 
-export default function Industries() {
+export default function Partners() {
   const navigate = useNavigate();
 
   return (
@@ -27,14 +33,15 @@ export default function Industries() {
       >
         <div className="max-w-6xl mx-auto">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
-            Industries We Serve
+            What Our Partners Say
           </h1>
           <p className="text-base sm:text-lg md:text-xl max-w-3xl sm:max-w-4xl mx-auto mb-6 sm:mb-8">
-            EGC India partners with diverse industries to deliver{" "}
+            Hear from our valued partners across the globe — trusted
+            collaborations that showcase the impact of{" "}
             <span className="font-bold text-yellow-400">
-              tailored services and technology solutions
+              EGC India’s platforms
             </span>{" "}
-            that drive growth, innovation, and compliance.
+            in trade, technology, and community.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button
@@ -54,7 +61,7 @@ export default function Industries() {
         </div>
       </motion.section>
 
-      {/* Industry Grid */}
+      {/* Partner Testimonials */}
       <motion.section
         initial="hidden"
         animate="visible"
@@ -63,39 +70,53 @@ export default function Industries() {
       >
         <div className="max-w-6xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-12 text-blue-900">
-            Our Industries
+            Partner Testimonials
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-12">
             {[
               {
-                title: "Automotive",
-                desc: "Supporting automotive OEMs and suppliers with procurement, compliance, and digital platforms.",
+                name: "Rajiv Menon",
+                company: "Trident Exim Solutions (India)",
+                feedback:
+                  "EGC India’s EXIM Gateway simplified our documentation and compliance processes, saving us weeks of manual effort.",
+                flag: india,
               },
               {
-                title: "Aerospace",
-                desc: "Delivering solutions for aerospace manufacturing, supply chain optimization, and documentation.",
+                name: "Fatima Al Zayed",
+                company: "Desert Star Trading (UAE)",
+                feedback:
+                  "Their trade advisory services gave us clarity in cross-border regulations and boosted our import timelines.",
+                flag: uae,
               },
               {
-                title: "Heavy Industry",
-                desc: "Streamlining procurement and EXIM operations for large-scale industrial projects.",
+                name: "Michael Fischer",
+                company: "EuroNova Chemicals (Germany)",
+                feedback:
+                  "With EGC’s inventory & spend management solutions, we’ve achieved greater cost transparency and efficiency.",
+                flag: germany,
               },
               {
-                title: "Energy & Utilities",
-                desc: "Providing technology-driven procurement and compliance solutions for energy and utility providers.",
+                name: "Sophia Carter",
+                company: "Summit Global Procurement (USA)",
+                feedback:
+                  "The P2P & O2C platform transformed how we handle supplier payments and cash flow cycles.",
+                flag: usa,
               },
               {
-                title: "Medical Devices & Healthcare",
-                desc: "Ensuring regulatory compliance and reliable supply chains for healthcare and medical device companies.",
+                name: "Hiroshi Tanaka",
+                company: "SakuraWave Exports (Japan)",
+                feedback:
+                  "PetSure’s platform gave us an innovative way to add pet safety features in our export product line.",
+                flag: japan,
               },
               {
-                title: "Construction & Real Estate",
-                desc: "Platforms like Econs EXIM Gateway connect builders, suppliers, and developers for efficient project execution.",
+                name: "Emily Brown",
+                company: "PacificCore Constructions (Australia)",
+                feedback:
+                  "HerRidez’s community focus is inspiring — we partnered to extend the culture of inclusivity to our teams.",
+                flag: australia,
               },
-              {
-                title: "Digital Commerce",
-                desc: "Building SaaS platforms and digital ecosystems to power modern commerce.",
-              },
-            ].map((industry, idx) => (
+            ].map((partner, idx) => (
               <motion.div
                 key={idx}
                 initial="hidden"
@@ -110,11 +131,20 @@ export default function Industries() {
                 }}
               >
                 <Card className="shadow-md hover:shadow-lg transition">
-                  <CardContent className="p-6 flex flex-col items-center text-center">
-                    <h3 className="text-lg sm:text-xl font-bold text-blue-900 mb-2 sm:mb-3">
-                      {industry.title}
+                  <CardContent className="p-6 text-center">
+                    {/* ✅ Use an img tag to display the flag */}
+                    <img
+                      src={partner.flag}
+                      alt={`${partner.name} flag`}
+                      className="w-auto h-12 mx-auto mb-4  object-cover shadow-sm"
+                    />
+                    <p className="italic text-gray-700 mb-4">
+                      “{partner.feedback}”
+                    </p>
+                    <h3 className="text-lg sm:text-xl font-bold text-blue-900 mb-1 sm:mb-2">
+                      {partner.name}
                     </h3>
-                    <p className="text-sm text-gray-700">{industry.desc}</p>
+                    <p className="text-sm text-gray-600">{partner.company}</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -123,7 +153,7 @@ export default function Industries() {
         </div>
       </motion.section>
 
-      {/* CTA Section */}
+      {/* Closing CTA */}
       <motion.section
         initial="hidden"
         animate="visible"
@@ -132,11 +162,11 @@ export default function Industries() {
       >
         <div className="max-w-6xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-bold mb-4">
-            Let’s Build the Future Together
+            Join Our Growing Network
           </h2>
           <p className="mb-4 sm:mb-6 text-base sm:text-lg max-w-2xl sm:max-w-3xl mx-auto">
-            No matter your industry, EGC India is committed to empowering growth
-            with customized solutions.
+            Become a part of EGC India’s ecosystem and experience the difference
+            trusted partnerships make.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button
