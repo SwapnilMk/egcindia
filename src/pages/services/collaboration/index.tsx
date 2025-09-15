@@ -25,7 +25,6 @@ export default function CommercialServicesCollaboration() {
       <motion.section
         initial="visible"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
         variants={sectionVariants}
         className="bg-blue-900 from-white text-white py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 text-center"
       >
@@ -52,10 +51,12 @@ export default function CommercialServicesCollaboration() {
           </h1>
           <p className="text-base sm:text-lg md:text-xl max-w-3xl sm:max-w-4xl mx-auto mb-6 sm:mb-8">
             A strong partnership between{" "}
-            <span className="font-bold text-yellow-400">Econ’s EXIM Gateway</span>
+            <span className="font-bold text-yellow-400">
+              Econ’s EXIM Gateway
+            </span>
             , <span className="font-bold text-yellow-400">AECCI</span>, and{" "}
-            <span className="font-bold text-yellow-400">EGC India</span>, driving
-            global trade, procurement, and technology-forward commercial
+            <span className="font-bold text-yellow-400">EGC India</span>,
+            driving global trade, procurement, and technology-forward commercial
             solutions.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
@@ -80,7 +81,6 @@ export default function CommercialServicesCollaboration() {
       <motion.section
         initial="visible"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
         variants={sectionVariants}
         className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-gray-50"
       >
@@ -137,7 +137,6 @@ export default function CommercialServicesCollaboration() {
       <motion.section
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
         variants={sectionVariants}
         className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-50 to-yellow-200"
       >
@@ -146,8 +145,8 @@ export default function CommercialServicesCollaboration() {
             Why This Collaboration Matters
           </h2>
           <p className="max-w-3xl sm:max-w-4xl mx-auto text-center mb-6 sm:mb-10 text-base sm:text-lg">
-            Together, <span className="font-semibold">Econ’s EXIM Gateway</span>,{" "}
-            <span className="font-semibold">AECCI</span>, and{" "}
+            Together, <span className="font-semibold">Econ’s EXIM Gateway</span>
+            , <span className="font-semibold">AECCI</span>, and{" "}
             <span className="font-semibold">EGC India</span> create a seamless
             ecosystem of trade, procurement, and compliance — empowering
             businesses to expand globally with confidence.
@@ -196,7 +195,6 @@ export default function CommercialServicesCollaboration() {
       <motion.section
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
         variants={sectionVariants}
         className="bg-gradient-to-r from-yellow-400 to-yellow-400 py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 text-center text-blue-900"
       >

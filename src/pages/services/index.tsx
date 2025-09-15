@@ -23,7 +23,6 @@ export default function Services() {
       <motion.section
         initial="visible"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
         variants={sectionVariants}
         className="bg-blue-900 from-white text-white py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 text-center"
       >
@@ -33,8 +32,8 @@ export default function Services() {
           </h1>
           <p className="text-base sm:text-lg md:text-xl max-w-3xl sm:max-w-4xl mx-auto mb-6 sm:mb-8">
             Discover how{" "}
-            <span className="font-bold text-yellow-400">EGC India</span> empowers
-            businesses with cutting-edge{" "}
+            <span className="font-bold text-yellow-400">EGC India</span>{" "}
+            empowers businesses with cutting-edge{" "}
             <span className="font-bold text-yellow-400">
               Commercial Services
             </span>{" "}
@@ -66,7 +65,6 @@ export default function Services() {
       <motion.section
         initial="visible"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
         variants={sectionVariants}
         className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-gray-50"
       >
@@ -118,7 +116,6 @@ export default function Services() {
       <motion.section
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
         variants={sectionVariants}
         className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8"
       >
@@ -135,7 +132,9 @@ export default function Services() {
               <li>💻 Custom App Development</li>
               <li>📊 AI & Data Analytics</li>
               <li>☁️ Cloud Integration & Automation</li>
-              <li>🚀 Platforms: BuildMate, PetSure, HerRidez, 4CORNER, UTAP LIVE</li>
+              <li>
+                🚀 Platforms: BuildMate, PetSure, HerRidez, 4CORNER, UTAP LIVE
+              </li>
             </ul>
           </div>
           <div className="relative rounded-2xl shadow-lg h-48 sm:h-64 md:h-72 overflow-hidden">
@@ -152,7 +151,6 @@ export default function Services() {
       <motion.section
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
         variants={sectionVariants}
         className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-50 to-yellow-200"
       >
@@ -191,7 +189,6 @@ export default function Services() {
       <motion.section
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
         variants={sectionVariants}
         className="bg-gradient-to-r from-yellow-400 to-yellow-400 py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 text-center text-blue-900"
       >

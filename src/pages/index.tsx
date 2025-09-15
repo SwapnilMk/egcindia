@@ -30,7 +30,6 @@ export default function Home() {
       <motion.section
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
         variants={sectionVariants}
         className="bg-gradient-to-b from-white to-blue-900 text-white py-12 px-4 text-center"
       >
@@ -76,7 +75,6 @@ export default function Home() {
       <motion.section
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
         variants={sectionVariants}
         className="py-12 px-4 grid grid-cols-1 md:grid-cols-2 max-w-6xl mx-auto gap-8 items-center"
       >
@@ -107,7 +105,6 @@ export default function Home() {
       <motion.section
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
         variants={sectionVariants}
         className="bg-gray-50 py-12 px-4"
       >
@@ -150,7 +147,6 @@ export default function Home() {
       <motion.section
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
         variants={sectionVariants}
         className="py-20 px-8 bg-gray-50"
       >
@@ -225,7 +221,6 @@ export default function Home() {
       <motion.section
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
         variants={sectionVariants}
         className="relative bg-cover bg-center py-20 px-8 text-center text-white"
       >
@@ -249,7 +244,6 @@ export default function Home() {
       <motion.section
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
         variants={sectionVariants}
         className="bg-gray-50 py-12 px-4"
       >
@@ -289,7 +283,6 @@ export default function Home() {
       <motion.section
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
         variants={sectionVariants}
         className="py-12 px-4 bg-gradient-to-r from-blue-50 to-yellow-200"
       >
@@ -349,7 +342,6 @@ export default function Home() {
       <motion.section
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
         variants={sectionVariants}
         className="bg-blue-900 text-white py-12 px-4 text-center"
       >
@@ -386,7 +378,6 @@ export default function Home() {
       <motion.section
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
         variants={sectionVariants}
         className="bg-gradient-to-r from-yellow-400 to-yellow-400 py-12 px-4 text-center text-blue-900"
       >

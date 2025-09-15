@@ -23,7 +23,6 @@ export default function AboutUs() {
       <motion.section
         initial="visible"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
         variants={sectionVariants}
         className="bg-blue-900 text-white py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 text-center"
       >
@@ -66,7 +65,6 @@ export default function AboutUs() {
       <motion.section
         initial="visible"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
         variants={sectionVariants}
         className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center max-w-6xl mx-auto"
       >
@@ -76,9 +74,9 @@ export default function AboutUs() {
           </h2>
           <p className="text-base sm:text-lg leading-relaxed mb-2 sm:mb-4">
             At EGC India, we believe in building more than just services — we
-            build platforms, partnerships, and pathways for businesses to thrive.
-            Backed by a global network, we deliver excellence in EXIM trade,
-            procurement, compliance, and technology-driven solutions.
+            build platforms, partnerships, and pathways for businesses to
+            thrive. Backed by a global network, we deliver excellence in EXIM
+            trade, procurement, compliance, and technology-driven solutions.
           </p>
           <p className="text-base sm:text-lg leading-relaxed">
             Our teams work at the intersection of commerce and innovation,
@@ -99,7 +97,6 @@ export default function AboutUs() {
       <motion.section
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
         variants={sectionVariants}
         className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-gray-50"
       >
@@ -121,8 +118,8 @@ export default function AboutUs() {
                   </h3>
                   <p className="text-sm sm:text-base leading-relaxed">
                     To empower enterprises with world-class EXIM services and
-                    digital platforms that simplify global trade, optimize costs,
-                    and create sustainable growth opportunities.
+                    digital platforms that simplify global trade, optimize
+                    costs, and create sustainable growth opportunities.
                   </p>
                 </CardContent>
               </Card>
@@ -139,8 +136,8 @@ export default function AboutUs() {
                     Our Vision
                   </h3>
                   <p className="text-sm sm:text-base leading-relaxed">
-                    To be India’s most trusted partner in commercial services and
-                    technology innovation — transforming industries with
+                    To be India’s most trusted partner in commercial services
+                    and technology innovation — transforming industries with
                     transparency, efficiency, and innovation.
                   </p>
                 </CardContent>
@@ -154,7 +151,6 @@ export default function AboutUs() {
       <motion.section
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
         variants={sectionVariants}
         className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-50 to-yellow-200"
       >
@@ -202,7 +198,6 @@ export default function AboutUs() {
       <motion.section
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
         variants={sectionVariants}
         className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto"
       >
@@ -234,7 +229,9 @@ export default function AboutUs() {
                   <h3 className="text-lg sm:text-xl font-bold text-blue-900 mb-2">
                     {leader.title}
                   </h3>
-                  <p className="text-sm text-gray-700 mb-2">{leader.subtitle}</p>
+                  <p className="text-sm text-gray-700 mb-2">
+                    {leader.subtitle}
+                  </p>
                   <p className="text-sm text-gray-700">{leader.desc}</p>
                 </CardContent>
               </Card>
@@ -247,7 +244,6 @@ export default function AboutUs() {
       <motion.section
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
         variants={sectionVariants}
         className="bg-gray-50 py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8"
       >
@@ -289,7 +285,6 @@ export default function AboutUs() {
       <motion.section
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
         variants={sectionVariants}
         className="bg-gradient-to-r from-yellow-400 to-yellow-400 py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 text-center text-blue-900"
       >
