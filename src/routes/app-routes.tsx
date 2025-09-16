@@ -15,6 +15,7 @@ import WhyChoose from "@/pages/whychoose";
 import Platforms from "@/pages/platform";
 import Industries from "@/pages/Industries";
 import Partners from "@/pages/partners";
+import EximGateway from "@/pages/services/exim/exim-gateway";
 
 export const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
           {
             path: "collaboration",
             element: <CommercialServicesCollaboration />,
+          },
+          {
+            path: "exim-gateway",
+            element: <EximGateway />,
           },
         ],
       },
