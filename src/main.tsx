@@ -1,13 +1,17 @@
 import { StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
+import { Provider } from "react-redux";
+import { store } from "./app/store";
 import "./index.css";
 import App from "./App.tsx";
 import { Loading } from "./components/loading.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <Suspense fallback={<Loading />}>
-      <App />
-    </Suspense>
+    <Provider store={store}>
+      <Suspense fallback={<Loading />}>
+        <App />
+      </Suspense>
+    </Provider>
   </StrictMode>,
 );

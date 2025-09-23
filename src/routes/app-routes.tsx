@@ -10,6 +10,14 @@ import PrivacyPolicy from "@/pages/EgcIndia/privacy-policy";
 import { Roles } from "@/pages/EximGateway/roles";
 import SelectPlan from "@/pages/EximGateway/auth/register/select-plan";
 import EXimDashboard from "@/pages/EximGateway/dashboard";
+import DashboardLayout from "@/layouts/dashboard/dashboard-layout";
+import Overview from "@/pages/EximGateway/dashboard/pages/Overview";
+import Procure from "@/pages/EximGateway/dashboard/pages/Procure";
+import Order from "@/pages/EximGateway/dashboard/pages/Order";
+import TradeFinance from "@/pages/EximGateway/dashboard/pages/TradeFinance";
+import TradeAdvisoryAndCompliance from "@/pages/EximGateway/dashboard/pages/TradeAdvisoryAndCompliance";
+import InventoryAndSpend from "@/pages/EximGateway/dashboard/pages/InventoryAndSpend";
+
 
 // Lazy-loaded layouts
 const MainLayout = lazy(() => import("@/layouts/main/main-layout"));
@@ -110,11 +118,22 @@ export const router = createBrowserRouter(
             { path: "*", element: <NotFound /> }, // 404 for /auth/*
           ],
         },
+        {
+          path: "dashboard",
+          element: <DashboardLayout />,
+          children: [
+            { index: true, element: <Overview /> },
+            { path: "procure", element: <Procure /> },
+            { path: "order", element: <Order /> },
+            { path: "trade-finance", element: <TradeFinance /> },
+            { path: "trade-advisory-and-compliance", element: <TradeAdvisoryAndCompliance /> },
+            { path: "inventory-and-spend", element: <InventoryAndSpend /> },
+          ],
+        },
       ],
     },
     // Auth routes (using AuthLayout)
     // Catch-all for unmatched top-level routes
-    { path: "dashboard", element: <EXimDashboard /> },
     { path: "*", element: <NotFound /> },
   ],
   {
