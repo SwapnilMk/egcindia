@@ -781,7 +781,7 @@ export default function SelectPlan() {
                   <div className="space-y-3">
                     <button
                       className="w-full bg-blue-900 text-white py-3 rounded-full font-semibold hover:bg-blue-800 transition-colors"
-                      onClick={() => navigate("/dashboard")}
+                      onClick={() => navigate("/eeg/dashboard")}
                     >
                       Enter Dashboard
                     </button>

@@ -1,14 +1,36 @@
 import React from "react";
 import { Outlet, NavLink } from "react-router-dom";
-import { BarChart2, ShoppingCart, PackageSearch, Truck, ShieldAlert, Lock, Lightbulb } from "lucide-react";
-
-const SidebarItem = ({ icon: Icon, label, to, locked = false }: { icon: React.ElementType, label: string, to: string, locked?: boolean }) => (
+import {
+  BarChart2,
+  ShoppingCart,
+  PackageSearch,
+  Truck,
+  ShieldAlert,
+  Lock,
+  Lightbulb,
+  Settings,
+  User,
+} from "lucide-react";
+import eximGateWayLogo from "@/assets/images/platforms/econs-exim-gateway.webp";
+const SidebarItem = ({
+  icon: Icon,
+  label,
+  to,
+  locked = false,
+}: {
+  icon: React.ElementType;
+  label: string;
+  to: string;
+  locked?: boolean;
+}) => (
   <NavLink
     to={to}
     end
     className={({ isActive }) =>
       `group flex items-center gap-3 px-4 py-3 rounded-xl cursor-pointer select-none transition-colors ${
-        isActive ? "bg-[#163445] text-white" : "text-slate-300 hover:bg-[#153242]"
+        isActive
+          ? "bg-[#163445] text-white"
+          : "text-slate-300 hover:bg-[#153242]"
       }`
     }
   >
@@ -25,29 +47,67 @@ const DashboardLayout: React.FC = () => {
       <aside className="w-[250px] h-full border-r border-[#123041] bg-[#0D202A] p-4 flex flex-col gap-4">
         {/* App mark */}
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-xl bg-[#E30613] text-white grid place-items-center font-black text-[11px] leading-none">
-            <span className="text-center">ECON'S<br/>EXIM</span>
-          </div>
+          <img
+            src={eximGateWayLogo}
+            alt="EGC India Logo"
+            className="w-12 h-12 object-contain"
+          />
           <div>
-            <div className="text-sm font-bold tracking-wide">EXIM Gateway</div>
-            <div className="text-[11px] text-slate-400 -mt-0.5">Powered by EGC India</div>
+            <div className="text-sm font-bold tracking-wide">
+              ECON'S EXIM Gateway
+            </div>
+            <div className="text-[11px] text-slate-400 -mt-0.5">
+              Powered by EGC India
+            </div>
           </div>
         </div>
 
-        <div className="mt-2 text-[11px] text-slate-400">In Association with AECCI</div>
-
-        <div className="mt-4 space-y-1">
-          <SidebarItem icon={BarChart2} label="Overview" to="/eeg/dashboard" />
-          <SidebarItem icon={ShoppingCart} label="Procure" to="/eeg/dashboard/procure" />
-          <SidebarItem icon={PackageSearch} label="Order" to="/eeg/dashboard/order" />
-          <SidebarItem icon={Truck} label="Trade Finance" to="/eeg/dashboard/trade-finance" />
-          <SidebarItem icon={ShieldAlert} label="Trade Advisory & Compliance" to="/eeg/dashboard/trade-advisory-and-compliance" />
-          <SidebarItem icon={Lightbulb} label="Inventory & Spend" to="/eeg/dashboard/inventory-and-spend" />
+        <div className="mt-2 text-[11px] text-slate-400">
+          In Association with AECCI
         </div>
 
-        <div className="mt-auto text-[11px] text-slate-500">
-          <div className="mb-1">Plan: <span className="text-slate-200 font-semibold">Basic</span></div>
-          <div>Role: <span className="text-slate-200 font-semibold">Exporter</span></div>
+        {/* Navigation */}
+        <div className="mt-4 space-y-1 flex-1">
+          <SidebarItem icon={BarChart2} label="Overview" to="/eeg/dashboard" />
+          <SidebarItem
+            icon={ShoppingCart}
+            label="Procure"
+            to="/eeg/dashboard/procure"
+          />
+          <SidebarItem
+            icon={PackageSearch}
+            label="Order"
+            to="/eeg/dashboard/order"
+          />
+          <SidebarItem
+            icon={Truck}
+            label="Trade Finance"
+            to="/eeg/dashboard/trade-finance"
+          />
+          <SidebarItem
+            icon={ShieldAlert}
+            label="Trade Advisory & Compliance"
+            to="/eeg/dashboard/trade-advisory-and-compliance"
+          />
+          <SidebarItem
+            icon={Lightbulb}
+            label="Inventory & Spend"
+            to="/eeg/dashboard/inventory-and-spend"
+          />
+        </div>
+
+        {/* Bottom section: Settings / Profile */}
+        <div className="space-y-1 border-t border-[#123041] pt-3">
+          <SidebarItem
+            icon={Settings}
+            label="Settings"
+            to="/eeg/dashboard/plan"
+          />
+          <SidebarItem
+            icon={User}
+            label="Profile"
+            to="/eeg/dashboard/profile"
+          />
         </div>
       </aside>
 
