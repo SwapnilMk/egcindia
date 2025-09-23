@@ -1,17 +1,18 @@
-import logo from "@/assets/images/logos/ecgindia.png";
-import type { LucideIcon } from "lucide-react"; // Import LucideIcon type
+import egcLogo from "@/assets/images/logos/egcindia-trasparant.webp";
+import econsEximGatewayLogo from "@/assets/images/platforms/econs-exim-gateway.webp";
+import econsLogo from "@/assets/images/platforms/econs-exim-gateway.webp";
+import aecciLogo from "@/assets/images/logos/aecci.webp";
+import type { LucideIcon } from "lucide-react";
 
 export const BLUR_FADE_DELAY = 0.15;
 
-// Define the type for submenu items
 export interface SubmenuItem {
   href: string;
   title: string;
   description?: string;
-  icon?: LucideIcon; // Use LucideIcon instead of React.ComponentType
+  icon?: LucideIcon;
 }
 
-// Define the type for nav items
 export interface NavItem {
   href: string;
   title: string;
@@ -19,20 +20,12 @@ export interface NavItem {
   submenu?: SubmenuItem[];
 }
 
-// Define the type for footer items
-interface FooterItem {
-  links: {
-    title: string;
-    href: string;
-  }[];
-}
-
-export const siteConfig = {
+export const egcSiteConfig = {
   name: "EGC India",
-  logo: logo,
+  logo: egcLogo,
   description:
     "EGC India is a trusted exporter of fresh vegetables, spices, pulses, grains, oilseeds, cattle feed, textile products, and foodstuff — serving USA, Europe, Middle East, Canada & Asia with quality and reliability.",
-  url: "http://localhost:5173",
+  url: "/",
   keywords: [
     "EGC India agro export",
     "India agro products exporter",
@@ -63,65 +56,72 @@ export const siteConfig = {
     github: "https://github.com/egcindia",
   },
   navItems: [
-    {
-      href: "/about",
-      title: "About",
-    },
-    {
-      href: "/services",
-      title: "Commercial Services",
-    },
-    {
-      href: "/platforms",
-      title: "Platforms",
-    },
-    {
-      href: "/partners",
-      title: "Partners",
-    },
+    { href: "/about", title: "About" },
+    { href: "/services", title: "Services" },
+    { href: "/platforms", title: "Platforms" },
+    { href: "/partners", title: "Partners" },
     {
       href: "/contact",
       title: "Contact",
       description: "Get in touch with us for inquiries and partnerships.",
     },
-  ] as NavItem[], // Explicitly type navItems
-  footerItems: [
-    {
-      links: [
-        { title: "Home", href: "#" },
-        { title: "About", href: "#" },
-        { title: "Why us?", href: "#" },
-      ],
-    },
-    {
-      links: [
-        { title: "Textile Products", href: "#" },
-        { title: "Global Reach", href: "#" },
-        { title: "Vegetables and Fruits", href: "#" },
-      ],
-    },
-    {
-      links: [
-        { title: "Spices", href: "#" },
-        { title: "Pulses and Beans", href: "#" },
-        { title: "Grains", href: "#" },
-      ],
-    },
-    {
-      links: [
-        { title: "Flour", href: "#" },
-        { title: "Coconut products", href: "#" },
-        { title: "Cattle Feed", href: "#" },
-      ],
-    },
-    {
-      links: [
-        { title: "Contact", href: "#" },
-        { title: "Facebook", href: "#" },
-        { title: "Disclaimer", href: "#" },
-      ],
-    },
-  ] as FooterItem[],
+  ] as NavItem[],
 };
 
-export type SiteConfig = typeof siteConfig;
+export const eximGatewaySiteConfig = {
+  name: "ECONS EXIM Gateway",
+  logo: econsEximGatewayLogo,
+  description:
+    "ECONS EXIM Gateway is a platform designed to streamline exports and imports with clear roles, benefits, and simplified workflows.",
+  url: "/eeg",
+  keywords: [
+    "EXIM Gateway",
+    "export import platform",
+    "trade gateway India",
+    "international trade portal",
+    "export import roles",
+    "pricing plans export import",
+    "logistics and partners",
+    "import export benefits",
+    "global trade connection",
+    "ECONS EXIM Gateway",
+  ],
+  links: {
+    email: "contact@eximgateway.com",
+    website: "https://eximgateway.com/",
+  },
+  navItems: [
+    { href: "about", title: "About" },
+    { href: "roles", title: "Roles" },
+    { href: "how-it-works", title: "How It Works" },
+    { href: "benefits", title: "Benefits" },
+    { href: "pricing", title: "Pricing Plans" },
+    { href: "partners", title: "Partners" },
+    { href: "contact", title: "Contact Us" },
+  ] as NavItem[],
+  cta: {
+    label: "Request Demo",
+    href: "request-demo",
+  },
+  login: {
+    label: "Login",
+    href: "login",
+  },
+  footer: {
+    logos: [
+      { src: aecciLogo, alt: "AECCI", className: "h-10" },
+      { src: econsLogo, alt: "ECONS", className: "h-10" },
+      { src: egcLogo, alt: "EGC India", className: "h-10" },
+    ],
+    copyright: "In Association with AECCI | Powered by EGC India",
+    links: [
+      { title: "Terms of Service", href: "#terms" },
+      { title: "Privacy Policy", href: "#privacy" },
+      { title: "Contact", href: "#contact" },
+    ],
+  },
+};
+
+// ✅ Correct type exports with proper names
+export type EgcSiteConfig = typeof egcSiteConfig;
+export type EximGatewaySiteConfig = typeof eximGatewaySiteConfig;

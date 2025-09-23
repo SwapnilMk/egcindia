@@ -3,14 +3,14 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
-import egcLogo from "@/assets/images/logos/ecgindia.png";
-import globalTradeAndTechnology from "@/assets/images/backgrounds/globaltradetech.png";
-import econsEximGateway from "@/assets/images/platforms/econs-exim-gateway.png";
-import fourCorner from "@/assets/images/platforms/4corner.png";
-import petsure from "@/assets/images/platforms/petsure.png";
-import herridez from "@/assets/images/platforms/her-ridez.png";
-import bxc from "@/assets/images/platforms/bxc.png";
-import utapLive from "@/assets/images/platforms/utap.png";
+import egcLogo from "@/assets/images/logos/egcindia-trasparant.webp";
+import globalTradeAndTechnology from "@/assets/images/backgrounds/globaltradetech.webp";
+import econsEximGateway from "@/assets/images/platforms/econs-exim-gateway.webp";
+import fourCorner from "@/assets/images/platforms/4corner.webp";
+import petsure from "@/assets/images/platforms/petsure.webp";
+import herridez from "@/assets/images/platforms/herRidez.webp";
+import bxc from "@/assets/images/platforms/bxc.webp";
+import utapLive from "@/assets/images/platforms/utap.webp";
 
 const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
@@ -82,8 +82,8 @@ export default function Home() {
           <h2 className="text-2xl sm:text-3xl font-bold mb-4">About Us</h2>
           <p className="text-base sm:text-lg leading-relaxed">
             <span className="font-bold">EGC India</span> (Econs Gateway
-            Commercial Services Pvt. Ltd.) is a technology-driven company
-            redefining how businesses manage
+            Commercial india) is a technology-driven company redefining how
+            businesses manage
             <strong> EXIM, procurement, and trade operations</strong>. We
             combine global expertise, AI-driven innovation, and industry
             partnerships to deliver sustainable growth.
@@ -171,6 +171,7 @@ export default function Home() {
               img: econsEximGateway,
               title: "Econ’s EXIM Gateway",
               desc: "A powerful platform simplifying global trade, documentation, and compliance for exporters and importers.",
+              link: "/eeg",
             },
             {
               img: fourCorner,
@@ -189,7 +190,7 @@ export default function Home() {
             },
             {
               img: bxc,
-              title: "BxC (BuildMate)",
+              title: "BxC",
               desc: "A B2B construction material procurement platform connecting suppliers with developers and builders.",
             },
             {
@@ -205,12 +206,17 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
             >
-              <Card className="shadow-md hover:shadow-lg transition">
+              <Card
+                className={`shadow-md hover:shadow-lg transition cursor-pointer ${
+                  platform.link ? "hover:scale-[1.02]" : ""
+                }`}
+                onClick={() => platform.link && navigate(platform.link)}
+              >
                 <CardContent className="p-6 text-center">
                   <img
                     src={platform.img}
                     alt={platform.title}
-                    className="h-24 mx-auto mb-4 object-contain"
+                    className="h-24 mx-auto mb-4 object-contain rounded border-2"
                   />
                   <h3 className="text-xl font-bold text-blue-900 mb-2">
                     {platform.title}

@@ -1,69 +1,100 @@
-# React + TypeScript + Vite
+# EGC India - Official Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains the source code for the official website of **EGC India (Econs Gateway Commercial Services Pvt. Ltd.)**. The website is a modern, responsive single-page application built with React, Vite, and TypeScript. It showcases the company's dual focus on global commercial services and innovative technology platforms.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+EGC India is a technology-driven company that provides comprehensive solutions in two main areas:
 
-## Expanding the ESLint configuration
+1.  **Commercial Services**: Specializing in EXIM (Export-Import) Gateway solutions, Procure-to-Pay (P2P), Order-to-Cash (O2C), and trade advisory.
+2.  **IT & Technology**: Developing and launching a suite of digital platforms, including **Econs EXIM Gateway**, **BuildMate (BxC)**, **PetSure**, **HerRidez**, and more.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+This website serves as the primary digital presence for EGC India, providing information about its services, platforms, partners, and company vision.
 
-```js
-export default tseslint.config([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
+## ✨ Key Features
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- **Responsive Design**: A fully responsive layout that works on all devices, from mobile phones to desktop screens, built with Tailwind CSS.
+- **Interactive UI**: Smooth animations and page transitions powered by Framer Motion for an engaging user experience.
+- **Component-Based Architecture**: Built with a robust set of reusable UI components from **Shadcn/ui**, ensuring consistency and maintainability.
+- **Fast & Modern Toolchain**: Utilizes Vite with SWC for a fast development server and optimized production builds.
+- **Client-Side Routing**: A seamless Single Page Application (SPA) experience handled by React Router DOM.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+## 🚀 Technology Stack
+
+- **Framework**: [React](https://react.dev/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Build Tool**: [Vite](https://vitejs.dev/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **UI Components**: [Shadcn/ui](https://ui.shadcn.com/)
+- **Routing**: [React Router](https://reactrouter.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Form Management**: [React Hook Form](https://react-hook-form.com/) & [Zod](https://zod.dev/)
+- **Linting/Formatting**: [ESLint](https://eslint.org/) & [Prettier](https://prettier.io/)
+
+## 📂 Project Structure
+
+The project follows a standard React application structure, with key directories organized for clarity and scalability.
+
+```
+/src
+├── assets/          # Static assets like images and logos
+├── components/      # Reusable components (UI primitives, layout parts)
+│   ├── ui/          # Shadcn/ui components
+│   ├── header/      # Header components
+│   └── footer/      # Footer components
+├── config/          # Site-wide configuration (nav links, text, etc.)
+├── hooks/           # Custom React hooks
+├── layouts/         # Main application layout structure
+├── lib/             # Utility functions
+├── pages/           # Route-specific page components
+└── routes/          # Application routing configuration
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## ⚙️ Getting Started
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
+To get a local copy up and running, follow these simple steps.
 
-export default tseslint.config([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs["recommended-typescript"],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+### Prerequisites
+
+- Node.js (v18.x or later)
+- npm or a compatible package manager
+
+### Installation & Setup
+
+1.  **Clone the repository:**
+
+    ```sh
+    git clone https://github.com/egcindia/egcindia.git
+    ```
+
+2.  **Navigate to the project directory:**
+
+    ```sh
+    cd egcindia
+    ```
+
+3.  **Install dependencies:**
+
+    ```sh
+    npm install
+    ```
+
+4.  **Run the development server:**
+    ```sh
+    npm run dev
+    ```
+    The application will be available at `http://localhost:5173`.
+
+## 📜 Available Scripts
+
+The following scripts are available in the `package.json`:
+
+- `npm run dev`: Starts the Vite development server with Hot Module Replacement (HMR).
+- `npm run build`: Compiles the TypeScript code and builds the application for production.
+- `npm run lint`: Lints the entire codebase using ESLint.
+- `npm run preview`: Serves the production build locally to preview it.
+- `npm run format`: Formats all files using Prettier.
+
+## 📦 Deployment
+
+This project is configured for seamless deployment on [Vercel](https://vercel.com). The `vercel.json` file includes a rewrite rule to ensure that all client-side routes are correctly handled, which is standard for SPAs.
