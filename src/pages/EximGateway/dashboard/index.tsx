@@ -1,12 +1,29 @@
-import { AppSidebar } from "@/components/app-sidebar";
-import { DashboardHome } from "@/components/section-cards";
-import { SiteHeader } from "@/components/site-header";
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
+import { AppSidebar } from "@/components/app-sidebar";
+import { SiteHeader } from "@/components/site-header";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import BasicDashboard from "./BasicDashboard";
+import GrowthDashboard from "./GrowthDashboard";
+import ProDashboard from "./ProDashboard";
 
 export default function EXimDashboard() {
   const { selectedPlan } = useSelector((state: RootState) => state.register);
+
+  const renderDashboard = () => {
+    switch (selectedPlan) {
+      case "Basic Plan":
+        return <BasicDashboard />;
+      case "Growth Plan":
+        return <GrowthDashboard />;
+      case "Pro Plan":
+        return <ProDashboard />;
+      default:
+        // This case should not be reached due to the ProtectedRoute,
+        // which ensures a plan is selected before rendering this component.
+        return <BasicDashboard />;
+    }
+  };
 
   return (
     <SidebarProvider
@@ -23,19 +40,7 @@ export default function EXimDashboard() {
         <div className="flex flex-1 flex-col">
           <div className="@container/main flex flex-1 flex-col gap-2">
             <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
-              {selectedPlan === "Basic Plan" ? (
-                <DashboardHome />
-              ) : (
-                <div className="p-6">
-                  <h1 className="text-2xl font-bold">
-                    Welcome to the {selectedPlan} Dashboard
-                  </h1>
-                  <p>
-                    This is the dashboard for the {selectedPlan}. More features
-                    coming soon!
-                  </p>
-                </div>
-              )}
+              {renderDashboard()}
             </div>
           </div>
         </div>

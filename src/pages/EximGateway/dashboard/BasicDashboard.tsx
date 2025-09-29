@@ -2,7 +2,7 @@ import { IconTrendingUp, IconLock } from "@tabler/icons-react";
 import { Card, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
-export function DashboardHome() {
+export default function BasicDashboard() {
   const features = [
     {
       icon: "📑",
@@ -67,7 +67,11 @@ export function DashboardHome() {
               {/* Icon (small) */}
               <div
                 className={`p-2 rounded-lg shadow-sm text-lg
-                ${feature.isActive ? "bg-blue-100 text-blue-600" : "bg-gray-100 text-gray-500"}
+                ${
+                  feature.isActive
+                    ? "bg-blue-100 text-blue-600"
+                    : "bg-gray-100 text-gray-500"
+                }
               `}
               >
                 {feature.icon}
@@ -93,7 +97,9 @@ export function DashboardHome() {
                             : "text-emerald-700"
                         }`}
                     >
-                      {feature.variant === "pro" ? "Pro Plan" : "Growth & Pro"}
+                      {feature.variant === "pro"
+                        ? "Pro Plan"
+                        : "Growth & Pro"}
                     </span>
                   </div>
                 )}
@@ -102,7 +108,9 @@ export function DashboardHome() {
 
             <CardFooter className="p-0 mt-2">
               <p
-                className={`text-xs leading-relaxed ${feature.isActive ? "text-gray-700" : "text-gray-500 italic"}`}
+                className={`text-xs leading-relaxed ${
+                  feature.isActive ? "text-gray-700" : "text-gray-500 italic"
+                }`}
               >
                 {feature.description}
               </p>

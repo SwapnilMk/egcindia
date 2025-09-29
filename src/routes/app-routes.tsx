@@ -10,6 +10,8 @@ import PrivacyPolicy from "@/pages/EgcIndia/privacy-policy";
 import { Roles } from "@/pages/EximGateway/roles";
 import SelectPlan from "@/pages/EximGateway/auth/register/select-plan";
 import EXimDashboard from "@/pages/EximGateway/dashboard";
+import ProtectedRoute from "@/components/ProtectedRoute";
+import AuthenticatePage from "@/pages/EximGateway/auth/Authenticate";
 
 const MainLayout = lazy(() => import("@/layouts/main/main-layout"));
 
@@ -99,7 +101,11 @@ export const router = createBrowserRouter(
         },
       ],
     },
-    { path: "dashboard", element: <EXimDashboard /> },
+    {
+      element: <ProtectedRoute />,
+      children: [{ path: "dashboard", element: <EXimDashboard /> }],
+    },
+    { path: "authenticate", element: <AuthenticatePage /> },
     { path: "*", element: <NotFound /> },
   ],
   {

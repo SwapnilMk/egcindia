@@ -26,6 +26,7 @@ interface RegisterState {
   formData: FormData;
   currentStep: "plan" | "roles" | "membership";
   hasMembership: boolean | null;
+  isRegistered: boolean;
 }
 
 const initialState: RegisterState = {
@@ -43,6 +44,7 @@ const initialState: RegisterState = {
   },
   currentStep: "plan",
   hasMembership: null,
+  isRegistered: false,
 };
 
 const registerSlice = createSlice({
@@ -67,6 +69,9 @@ const registerSlice = createSlice({
     setHasMembership(state, action: PayloadAction<boolean | null>) {
       state.hasMembership = action.payload;
     },
+    setRegistrationComplete(state) {
+      state.isRegistered = true;
+    },
     resetRegistration: () => initialState,
   },
 });
@@ -77,6 +82,7 @@ export const {
   setFormData,
   setCurrentStep,
   setHasMembership,
+  setRegistrationComplete,
   resetRegistration,
 } = registerSlice.actions;
 

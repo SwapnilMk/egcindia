@@ -8,6 +8,7 @@ import {
   setFormData,
   setCurrentStep,
   setHasMembership,
+  setRegistrationComplete,
   resetRegistration,
 } from "@/store/slices/registerSlice";
 import { RootState } from "@/store/store";
@@ -136,6 +137,7 @@ export default function SelectPlan() {
     setTimeout(() => {
       setLoading(false);
       setFormSubmitted(true);
+      dispatch(setRegistrationComplete());
     }, 2000);
   };
 

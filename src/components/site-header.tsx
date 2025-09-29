@@ -11,33 +11,37 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-
-// ✅ Define allowed plan names
-type PlanType = "Basic" | "Pro" | "Premium";
-
-// ✅ Now TS knows userPlan can only be one of these
-const userPlan: PlanType = "Basic";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store/store";
 
 export function SiteHeader() {
+  const { selectedPlan } = useSelector((state: RootState) => state.register);
+
   const getPlanConfig = () => {
-    switch (userPlan) {
-      case "Basic":
+    switch (selectedPlan) {
+      case "Basic Plan":
         return {
           label: "Basic Plan (Free)",
           color: "text-orange-700", // Bronze color
           emoji: "🥉",
         };
-      case "Pro":
+      case "Growth Plan":
+        return {
+          label: "Growth Plan",
+          color: "text-emerald-700",
+          emoji: "📈",
+        };
+      case "Pro Plan":
         return {
           label: "Pro Plan",
           color: "text-yellow-500", // Gold color
           emoji: "🥇",
         };
-      case "Premium":
+      default:
         return {
-          label: "Premium Plan",
-          color: "text-gray-400", // Platinum look
-          emoji: "🏆",
+          label: "No Plan",
+          color: "text-gray-500",
+          emoji: "❔",
         };
     }
   };
@@ -45,7 +49,7 @@ export function SiteHeader() {
   const plan = getPlanConfig();
 
   return (
-    <header className="flex h-(--header-height) shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-(--header-height)">
+    <header className="flex h-[var(--header-height)] shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear">
       <div className="flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6">
         {/* Sidebar Trigger */}
         <SidebarTrigger className="-ml-1" />
