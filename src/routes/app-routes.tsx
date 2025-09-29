@@ -11,12 +11,8 @@ import { Roles } from "@/pages/EximGateway/roles";
 import SelectPlan from "@/pages/EximGateway/auth/register/select-plan";
 import EXimDashboard from "@/pages/EximGateway/dashboard";
 
-// Lazy-loaded layouts
 const MainLayout = lazy(() => import("@/layouts/main/main-layout"));
-// const EegLayout = lazy(() => import("@/layouts/eeg/index")); // New: EEG layout
-// const AuthLayout = lazy(() => import("@/layouts/auth/index")); // New: Auth layout
 
-// Lazy-loaded pages
 const Home = lazy(() => import("@/pages"));
 const AboutUs = lazy(() => import("@/pages/EgcIndia/about"));
 const Services = lazy(() => import("@/pages/EgcIndia/services"));
@@ -41,13 +37,9 @@ const StartConversation = lazy(
 );
 const NotFound = lazy(() => import("@/pages/NotFound"));
 const ErrorPage = lazy(() => import("@/pages/ErrorPage"));
-// const EegDashboard = lazy(() => import("@/pages/eeg/dashboard")); // New: Example EEG page
-// const Login = lazy(() => import("@/pages/auth/login")); // New: Login page
-// const Signup = lazy(() => import("@/pages/auth/signup")); // New: Signup page
 
 export const router = createBrowserRouter(
   [
-    // Main routes (using MainLayout)
     {
       path: "/",
       element: <MainLayout />,
@@ -84,40 +76,33 @@ export const router = createBrowserRouter(
           ],
         },
         { path: "privacy-policy", element: <PrivacyPolicy /> },
-        // { path: "*", element: <NotFound /> }, // 404 for main routes
       ],
     },
-    // EEG routes (using EegLayout)
     {
       path: "/eeg",
-      // element: <EegLayout />,
       element: <EconsLayout />,
       errorElement: <ErrorPage />,
       children: [
-        { index: true, element: <EximGatewayHome /> }, // Example child route
-        { path: "about", element: <AboutExim /> }, // 404 for /eeg/*
-        { path: "how-it-works", element: <HowEximWorks /> }, // 404 for /eeg/*
-        { path: "benefits", element: <Benefits /> }, // 404 for /eeg/*
-        { path: "pricing", element: <PricingPlans /> }, // 404 for /eeg/*
-        { path: "roles", element: <Roles /> }, // 404 for /eeg/*
-        // { path: "*", element: <NotFound /> }, // 404 for /eeg/*
+        { index: true, element: <EximGatewayHome /> },
+        { path: "about", element: <AboutExim /> },
+        { path: "how-it-works", element: <HowEximWorks /> },
+        { path: "benefits", element: <Benefits /> },
+        { path: "pricing", element: <PricingPlans /> },
+        { path: "roles", element: <Roles /> },
         {
           path: "auth",
           errorElement: <ErrorPage />,
           children: [
             { path: "select-plan", element: <SelectPlan /> },
-            // { path: "signup", element: <Signup /> },
-            { path: "*", element: <NotFound /> }, // 404 for /auth/*
+            { path: "*", element: <NotFound /> },
           ],
         },
       ],
     },
-    // Auth routes (using AuthLayout)
-    // Catch-all for unmatched top-level routes
     { path: "dashboard", element: <EXimDashboard /> },
     { path: "*", element: <NotFound /> },
   ],
   {
-    basename: "/", // Adjust if deploying under a subpath (e.g., "/my-app")
+    basename: "/",
   },
 );

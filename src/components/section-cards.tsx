@@ -2,7 +2,7 @@ import { IconTrendingUp, IconLock } from "@tabler/icons-react";
 import { Card, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
-export function SectionCards() {
+export function DashboardHome() {
   const features = [
     {
       icon: "📑",
