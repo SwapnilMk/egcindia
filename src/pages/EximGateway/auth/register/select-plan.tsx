@@ -11,7 +11,7 @@ import {
   setRegistrationComplete,
   resetRegistration,
 } from "@/store/slices/registerSlice";
-import { RootState } from "@/store/store";
+import type { RootState } from "@/store/store";
 
 export default function SelectPlan() {
   const dispatch = useDispatch();

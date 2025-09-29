@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { RootState } from "@/store/store";
+import type { RootState } from "@/store/store";
 import { AppSidebar } from "@/components/app-sidebar";
 import { SiteHeader } from "@/components/site-header";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";

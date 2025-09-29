@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useSelector } from "react-redux";
-import { RootState } from "@/store/store";
+import type { RootState } from "@/store/store";
 
 export function SiteHeader() {
   const { selectedPlan } = useSelector((state: RootState) => state.register);

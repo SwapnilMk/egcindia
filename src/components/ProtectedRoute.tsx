@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
-import { RootState } from "@/store/store";
+import type { RootState } from "@/store/store";
 
 const ProtectedRoute = () => {
   const { isRegistered } = useSelector((state: RootState) => state.register);
