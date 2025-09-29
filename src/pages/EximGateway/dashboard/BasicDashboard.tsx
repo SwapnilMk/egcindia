@@ -97,9 +97,7 @@ export default function BasicDashboard() {
                             : "text-emerald-700"
                         }`}
                     >
-                      {feature.variant === "pro"
-                        ? "Pro Plan"
-                        : "Growth & Pro"}
+                      {feature.variant === "pro" ? "Pro Plan" : "Growth & Pro"}
                     </span>
                   </div>
                 )}

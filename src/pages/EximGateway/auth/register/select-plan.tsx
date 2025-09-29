@@ -17,13 +17,8 @@ export default function SelectPlan() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const {
-    selectedPlan,
-    selectedRole,
-    formData,
-    currentStep,
-    hasMembership,
-  } = useSelector((state: RootState) => state.register);
+  const { selectedPlan, selectedRole, formData, currentStep, hasMembership } =
+    useSelector((state: RootState) => state.register);
 
   const planDetails = {
     "Basic Plan": {

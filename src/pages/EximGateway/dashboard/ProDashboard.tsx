@@ -12,7 +12,7 @@ export default function ExporterProDashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-yellow-50 px-8 py-6">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-yellow-50 px-4 sm:px-8 py-6">
       {/* Pro Plan Banner */}
       <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 rounded-lg mb-8">
         <p className="font-semibold">You are on Pro Plan.</p>
@@ -25,14 +25,17 @@ export default function ExporterProDashboard() {
       </div>
 
       {/* Stats Overview */}
-      <section className="grid grid-cols-4 gap-6 mb-10">
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
         {[
           { title: "RFQs Created", value: "45" },
           { title: "Quotes Sent", value: "32" },
           { title: "Shipments In Progress", value: "14" },
           { title: "Pending Compliance", value: "6" },
         ].map((stat, i) => (
-          <Card key={i} className="shadow-lg border border-gray-200 hover:shadow-xl">
+          <Card
+            key={i}
+            className="shadow-lg border border-gray-200 hover:shadow-xl"
+          >
             <CardContent className="p-6 text-center">
               <p className="text-2xl font-bold text-blue-900">{stat.value}</p>
               <p className="text-gray-700">{stat.title}</p>
@@ -42,7 +45,7 @@ export default function ExporterProDashboard() {
       </section>
 
       {/* Exporter Tools */}
-      <section className="grid grid-cols-3 gap-6 mb-12">
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
         {[
           {
             title: "📑 Create Export Offer",
@@ -113,15 +116,13 @@ export default function ExporterProDashboard() {
       {/* Order Form Modal with File Upload */}
       {showOrderForm && (
         <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-          <div className="bg-white p-8 rounded-lg shadow-xl w-1/2">
+          <div className="bg-white p-8 rounded-lg shadow-xl w-full sm:w-3/4 md:w-1/2">
             <h2 className="text-2xl font-bold text-blue-900 mb-4">
               📝 Create New Export Order
             </h2>
             <form className="space-y-4">
               <div>
-                <label className="block text-gray-700 mb-1">
-                  Product Name
-                </label>
+                <label className="block text-gray-700 mb-1">Product Name</label>
                 <input
                   type="text"
                   className="w-full border px-4 py-2 rounded-lg"

@@ -19,8 +19,6 @@ export default function EXimDashboard() {
       case "Pro Plan":
         return <ProDashboard />;
       default:
-        // This case should not be reached due to the ProtectedRoute,
-        // which ensures a plan is selected before rendering this component.
         return <BasicDashboard />;
     }
   };

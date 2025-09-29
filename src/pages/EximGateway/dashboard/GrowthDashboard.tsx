@@ -12,7 +12,7 @@ export default function ExporterGrowthDashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 px-8 py-6">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 px-4 sm:px-8 py-6">
       {/* Upgrade Banner */}
       <div className="bg-blue-100 border-l-4 border-blue-500 text-blue-800 p-4 rounded-lg mb-8">
         <p className="font-semibold">You are on Growth Plan.</p>
@@ -26,7 +26,7 @@ export default function ExporterGrowthDashboard() {
       </div>
 
       {/* Stats Overview */}
-      <section className="grid grid-cols-4 gap-6 mb-10">
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
         {[
           { title: "RFQs Created", value: "15" },
           { title: "Quotes Sent", value: "10" },
@@ -43,7 +43,7 @@ export default function ExporterGrowthDashboard() {
       </section>
 
       {/* Exporter Tools */}
-      <section className="grid grid-cols-3 gap-6 mb-12">
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
         {/* Enabled Tools */}
         {[
           {
@@ -95,7 +95,7 @@ export default function ExporterGrowthDashboard() {
         <h2 className="text-xl font-bold text-blue-900 mb-4">
           ⚡ Quick Actions (Available)
         </h2>
-        <div className="flex space-x-4">
+        <div className="flex flex-wrap space-x-4">
           <button
             onClick={() => setShowOrderForm(true)}
             className="bg-blue-900 text-white px-6 py-3 rounded-lg hover:bg-blue-800"
@@ -117,15 +117,13 @@ export default function ExporterGrowthDashboard() {
       {/* Order Form Modal with File Upload */}
       {showOrderForm && (
         <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-          <div className="bg-white p-8 rounded-lg shadow-xl w-1/2">
+          <div className="bg-white p-8 rounded-lg shadow-xl w-full sm:w-3/4 md:w-1/2">
             <h2 className="text-2xl font-bold text-blue-900 mb-4">
               📝 Create New Export Order
             </h2>
             <form className="space-y-4">
               <div>
-                <label className="block text-gray-700 mb-1">
-                  Product Name
-                </label>
+                <label className="block text-gray-700 mb-1">Product Name</label>
                 <input
                   type="text"
                   className="w-full border px-4 py-2 rounded-lg"
