@@ -1,8 +1,29 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setSelectedPlan,
+  setSelectedRole,
+  setFormData,
+  setCurrentStep,
+  setHasMembership,
+  resetRegistration,
+} from "@/store/slices/registerSlice";
+import { RootState } from "@/store/store";
 
 export default function SelectPlan() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const {
+    selectedPlan,
+    selectedRole,
+    formData,
+    currentStep,
+    hasMembership,
+  } = useSelector((state: RootState) => state.register);
+
   const planDetails = {
     "Basic Plan": {
       price: "₹0 / year",
@@ -33,26 +54,9 @@ export default function SelectPlan() {
   };
 
   type PlanType = keyof typeof planDetails;
-  const [selectedPlan, setSelectedPlan] = useState<PlanType>("Basic Plan");
-  const [currentStep, setCurrentStep] = useState<
-    "plan" | "roles" | "membership"
-  >("plan");
-  const [selectedRole, setSelectedRole] = useState<any>(null);
-  const [hasMembership, setHasMembership] = useState<boolean | null>(null);
-  const [formData, setFormData] = useState({
-    fullName: "",
-    companyName: "",
-    email: "",
-    phone: "",
-    membershipId: "",
-    gstPan: "",
-    paymentMethod: "UPI",
-    termsAgreed: false,
-  });
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const navigate = useNavigate();
 
   const roles = [
     {
@@ -139,10 +143,7 @@ export default function SelectPlan() {
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     const { name, value, type, checked } = e.target as any;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
+    dispatch(setFormData({ [name]: type === "checkbox" ? checked : value }));
 
     // Clear error when user starts typing
     if (formErrors[name]) {
@@ -173,39 +174,30 @@ export default function SelectPlan() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {Object.keys(planDetails).map((plan) => {
-              const typedPlan = plan as PlanType;
-              const isBasic = typedPlan === "Basic Plan";
-              const isSelected = selectedPlan === typedPlan;
+            {(Object.keys(planDetails) as PlanType[]).map((plan) => {
+              const isSelected = selectedPlan === plan;
 
               return (
                 <Card
                   key={plan}
                   className={`cursor-pointer transition-all duration-300 hover:shadow-lg ${
                     isSelected ? "ring-2 ring-blue-500 ring-opacity-50" : ""
-                  } ${!isBasic ? "opacity-50 pointer-events-none" : ""}`}
-                  onClick={() => isBasic && setSelectedPlan(typedPlan)}
+                  }`}
+                  onClick={() => dispatch(setSelectedPlan(plan))}
                 >
-                  <CardContent
-                    className={`p-6 ${!isBasic ? "bg-gray-50" : ""}`}
-                  >
+                  <CardContent className="p-6">
                     <div className="flex justify-between items-start mb-4">
                       <h3 className="text-xl font-bold text-blue-900">
                         {plan}
                       </h3>
-                      {!isBasic && (
-                        <span className="bg-gray-300 text-gray-600 text-xs font-bold px-2 py-1 rounded-full">
-                          Coming Soon
-                        </span>
-                      )}
                     </div>
 
                     <p className="text-2xl font-bold text-blue-900 mb-4">
-                      {planDetails[typedPlan].price}
+                      {planDetails[plan].price}
                     </p>
 
                     <ul className="space-y-2 mb-6 text-sm text-gray-700">
-                      {planDetails[typedPlan].highlights.map((item, i) => (
+                      {planDetails[plan].highlights.map((item, i) => (
                         <li key={i} className="flex items-center space-x-2">
                           <span>•</span>
                           <span>{item}</span>
@@ -213,18 +205,16 @@ export default function SelectPlan() {
                       ))}
                     </ul>
 
-                    {isBasic && (
-                      <button
-                        onClick={() => setCurrentStep("roles")}
-                        className={`w-full font-semibold py-3 rounded-full transition-colors ${
-                          isSelected
-                            ? "bg-blue-900 text-white hover:bg-blue-800"
-                            : "bg-blue-100 text-blue-900 hover:bg-blue-200"
-                        }`}
-                      >
-                        {isSelected ? "Next: Select Role" : "Select Plan"}
-                      </button>
-                    )}
+                    <button
+                      onClick={() => dispatch(setCurrentStep("roles"))}
+                      className={`w-full font-semibold py-3 rounded-full transition-colors ${
+                        isSelected
+                          ? "bg-blue-900 text-white hover:bg-blue-800"
+                          : "bg-blue-100 text-blue-900 hover:bg-blue-200"
+                      }`}
+                    >
+                      {isSelected ? "Next: Select Role" : "Select Plan"}
+                    </button>
                   </CardContent>
                 </Card>
               );
@@ -232,7 +222,7 @@ export default function SelectPlan() {
           </div>
 
           {/* Selected Plan Info */}
-          {selectedPlan === "Basic Plan" && (
+          {selectedPlan && (
             <div className="mt-12 p-6 bg-blue-50 rounded-lg">
               <h3 className="text-xl font-bold text-blue-900 mb-4">
                 Your Selected Plan: {selectedPlan}
@@ -240,7 +230,7 @@ export default function SelectPlan() {
               <div className="flex justify-between text-sm">
                 <span>Price:</span>
                 <span className="font-semibold">
-                  {planDetails["Basic Plan"].price}
+                  {planDetails[selectedPlan].price}
                 </span>
               </div>
               <div className="flex justify-between text-sm mt-2">
@@ -265,7 +255,7 @@ export default function SelectPlan() {
           <div className="max-w-7xl mx-auto flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <button
-                onClick={() => setCurrentStep("plan")}
+                onClick={() => dispatch(setCurrentStep("plan"))}
                 className="flex items-center space-x-2 text-blue-200 hover:text-white"
               >
                 <svg
@@ -308,7 +298,7 @@ export default function SelectPlan() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {roles.map((role, index) => {
               const isSelected = selectedRole?.title === role.title;
-              const isAvailable = role.title === "Exporters"; // Only Exporters available for now
+              const isAvailable = role.title === "Exporters"; // Only Exporters available
 
               return (
                 <Card
@@ -320,7 +310,7 @@ export default function SelectPlan() {
                         ? "border-gray-200 hover:border-blue-300"
                         : "border-gray-200 opacity-50 cursor-not-allowed"
                   }`}
-                  onClick={() => isAvailable && setSelectedRole(role)}
+                  onClick={() => isAvailable && dispatch(setSelectedRole(role))}
                 >
                   <CardContent className="p-6">
                     <div className="flex flex-col h-full">
@@ -339,7 +329,9 @@ export default function SelectPlan() {
                       <div className="text-center">
                         {isAvailable ? (
                           <button
-                            onClick={() => setCurrentStep("membership")}
+                            onClick={() =>
+                              dispatch(setCurrentStep("membership"))
+                            }
                             disabled={!isSelected}
                             className={`px-4 py-2 rounded-full font-semibold text-sm transition-colors ${
                               isSelected
@@ -388,7 +380,7 @@ export default function SelectPlan() {
           <div className="max-w-7xl mx-auto flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <button
-                onClick={() => setCurrentStep("roles")}
+                onClick={() => dispatch(setCurrentStep("roles"))}
                 className="flex items-center space-x-2 text-blue-200 hover:text-white"
               >
                 <svg
@@ -425,7 +417,7 @@ export default function SelectPlan() {
             </h2>
             <div className="flex justify-center space-x-6 mb-8">
               <button
-                onClick={() => setHasMembership(true)}
+                onClick={() => dispatch(setHasMembership(true))}
                 className={`px-8 py-3 rounded-full font-semibold shadow-lg transition-all ${
                   hasMembership === true
                     ? "bg-blue-900 text-white shadow-blue-500/25"
@@ -435,7 +427,7 @@ export default function SelectPlan() {
                 Yes
               </button>
               <button
-                onClick={() => setHasMembership(false)}
+                onClick={() => dispatch(setHasMembership(false))}
                 className={`px-8 py-3 rounded-full font-semibold shadow-lg transition-all ${
                   hasMembership === false
                     ? "bg-blue-900 text-white shadow-blue-500/25"
@@ -787,19 +779,8 @@ export default function SelectPlan() {
                     </button>
                     <button
                       onClick={() => {
-                        setCurrentStep("plan");
                         setFormSubmitted(false);
-                        setFormData({
-                          fullName: "",
-                          companyName: "",
-                          email: "",
-                          phone: "",
-                          membershipId: "",
-                          gstPan: "",
-                          paymentMethod: "UPI",
-                          termsAgreed: false,
-                        });
-                        setHasMembership(null);
+                        dispatch(resetRegistration());
                       }}
                       className="w-full bg-gray-200 text-gray-800 py-3 rounded-full font-semibold hover:bg-gray-300 transition-colors"
                     >
@@ -891,7 +872,7 @@ export default function SelectPlan() {
                   <div className="md:col-span-2 flex justify-center space-x-4 pt-4">
                     <button
                       type="button"
-                      onClick={() => setCurrentStep("roles")}
+                      onClick={() => dispatch(setCurrentStep("roles"))}
                       className="px-8 py-3 bg-gray-300 text-gray-800 font-semibold rounded-full hover:bg-gray-400"
                     >
                       Back
